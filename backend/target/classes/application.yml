@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/imageconverter}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 100MB
+
+server:
+  port: ${PORT:8080}
+
+app:
+  stripe:
+    pricePackSize: 20
+    priceUsd: 1.98
+    webhookSecret: ${STRIPE_WEBHOOK_SECRET:}
+    publishableKey: ${STRIPE_PUBLISHABLE_KEY:}
+    secretKey: ${STRIPE_SECRET_KEY:}
+  auth:
+    googleClientId: ${GOOGLE_CLIENT_ID:}
+    allowedOrigins: ${ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
